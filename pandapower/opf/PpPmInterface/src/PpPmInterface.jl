@@ -8,6 +8,8 @@ using Cbc
 using Ipopt
 using Juniper
 
+using Gurobi
+
 include("input/pp_to_pm.jl")
 export load_pm_from_json, get_model, get_solver
 #
