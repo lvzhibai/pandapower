@@ -2,11 +2,11 @@ using PowerModels
 using PpPmInterface
 using Test
 
-include("../src/pm_models/run_powermodels.jl")
-include("../src/pm_models/run_powermodels_mn_storage.jl")
-include("../src/pm_models/run_powermodels_ots.jl")
-include("../src/pm_models/run_powermodels_powerflow.jl")
-include("../src/pm_models/run_powermodels_tnep.jl")
+# include("../src/pm_models/run_powermodels.jl")
+# include("../src/pm_models/run_powermodels_mn_storage.jl")
+# include("../src/pm_models/run_powermodels_ots.jl")
+# include("../src/pm_models/run_powermodels_powerflow.jl")
+# include("../src/pm_models/run_powermodels_tnep.jl")
 
 testfile = "pm_test.json" #use gurobi to solve
 @testset "PpPmInterface.jl" begin

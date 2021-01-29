@@ -1,10 +1,8 @@
-using PowerModels
-using Ipopt
-using Gurobi
-using JuMP
-using .PpPmInterface
 
-import JSON
+using Gurobi
+# using JuMP
+# using .PpPmInterface
+
 
 function read_time_series(json_path)
     time_series = Dict()
@@ -37,10 +35,10 @@ end
 
 function run_powermodels_mn_storage(json_path)
     # load converted pandapower network
-    pm = PpPmInterface.load_pm_from_json(json_path)
+    pm = load_pm_from_json(json_path)
     # copy network n_time_steps time step times
     n_time_steps = pm["n_time_steps"]
-    mn = PowerModels.replicate(pm, pm["n_time_steps"])
+    mn = replicate(pm, pm["n_time_steps"])
     mn["time_elapsed"] = pm["time_elapsed"]
     # set P, Q values of loads and generators from time series
     if isfile("/tmp/timeseries.json")
