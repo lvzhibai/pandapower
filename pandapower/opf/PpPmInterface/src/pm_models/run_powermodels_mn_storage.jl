@@ -1,7 +1,5 @@
 
 using Gurobi
-# using JuMP
-# using .PpPmInterface
 
 
 function read_time_series(json_path)
@@ -51,7 +49,7 @@ function run_powermodels_mn_storage(json_path)
     ipopt_solver = JuMP.with_optimizer(Ipopt.Optimizer, print_level = 0)
 
     # run multinetwork storage opf
-    result = PowerModels._run_mn_strg_opf(mn, PowerModels.ACPPowerModel, ipopt_solver)
+    result = _run_mn_strg_opf(mn, PowerModels.ACPPowerModel, ipopt_solver)
     print_summary(result)
     return result
 end

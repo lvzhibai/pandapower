@@ -2,27 +2,29 @@ using PowerModels
 using PpPmInterface
 using Test
 
-# include("../src/pm_models/run_powermodels.jl")
-# include("../src/pm_models/run_powermodels_mn_storage.jl")
-# include("../src/pm_models/run_powermodels_ots.jl")
-# include("../src/pm_models/run_powermodels_powerflow.jl")
-# include("../src/pm_models/run_powermodels_tnep.jl")
-
-testfile = "pm_test.json" #use gurobi to solve
+test_net="pm_test.json"
+test_ipopt = "test_ipopt.json"
+test_Gurobi = "test_Gurobi.json" #use gurobi to solve
 @testset "PpPmInterface.jl" begin
-        result=run_powermodels(testfile)
+        # for i in ["","_ots","_powerflow","_tnep"]
+        #         comm="run_powermodels"*i*"(test_ipopt)"
+        #         result=Meta.parse($comm)
+        #         @test typeof(result)==Dict{String,Any}
+        #         @test result["solve_time"]>=0
+        # end
+        result=run_powermodels(test_ipopt)
         @test typeof(result)==Dict{String,Any}
         @test result["solve_time"]>=0
-        # result=run_powermodels_mn_storage(testfile)
+        # result=run_powermodels_mn_storage(test_Gurobi)
         # @test typeof(result)==Dict{String,Any}
         # @test result["solve_time"]>=0
-        result=run_powermodels_ots(testfile)
+        result=run_powermodels_ots(test_net) #use Gurobi
         @test typeof(result)==Dict{String,Any}
         @test result["solve_time"]>=0
-        result=run_powermodels_powerflow(testfile)
+        result=run_powermodels_powerflow(test_ipopt)
         @test typeof(result)==Dict{String,Any}
         @test result["solve_time"]>=0
-        result=run_powermodels_tnep(testfile)
+        result=run_powermodels_tnep(test_ipopt)
         @test typeof(result)==Dict{String,Any}
         @test result["solve_time"]>=0
 end

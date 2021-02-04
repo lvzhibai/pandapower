@@ -1,6 +1,4 @@
 
-# using .PpPmInterface
-
 
 function run_powermodels_powerflow(json_path)
     pm = load_pm_from_json(json_path)

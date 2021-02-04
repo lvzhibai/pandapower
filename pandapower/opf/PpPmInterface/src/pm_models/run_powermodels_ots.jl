@@ -1,6 +1,4 @@
 
-# using .PpPmInterface
-
 function run_powermodels_ots(json_path)
     # function to run optimal transmission switching (OTS) optimization from powermodels.jl
     pm = load_pm_from_json(json_path)
